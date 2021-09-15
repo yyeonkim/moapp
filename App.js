@@ -37,7 +37,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   body: {
-    padding: 10,
+    padding: 20,
+    paddingTop: 30,
   },
 
   text: {
