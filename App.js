@@ -7,7 +7,7 @@ export default function App() {
 
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>
+      <Text style={styles.textBox}>
         {greet}
         {name}
       </Text>
@@ -41,9 +41,8 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
 
-  text: {
+  textBox: {
     backgroundColor: "#b2bec3",
-    height: 50,
     fontSize: 20,
     padding: 10,
     marginBottom: 10,
