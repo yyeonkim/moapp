@@ -10,6 +10,15 @@ import {
 
 export default function App() {
   const [buttonTitle, setButtonTitle] = useState("Press Me");
+
+  const handleButtonClick = () => {
+    if (buttonTitle === "Press Me") {
+      setButtonTitle("Ouch!!");
+    } else if (buttonTitle === "Ouch!!") {
+      setButtonTitle("Press Me");
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container} style={styles.scroll}>
       <View style={styles.title}>
@@ -23,12 +32,7 @@ export default function App() {
       <Image style={styles.image} source={require("./cat-icon.png")} />
       <Image style={styles.image} source={require("./cat-icon.png")} />
       <Image style={styles.image} source={require("./cat-icon.png")} />
-      <Button
-        title={buttonTitle}
-        onPress={() => {
-          setButtonTitle("Ouch!");
-        }}
-      ></Button>
+      <Button title={buttonTitle} onPress={handleButtonClick}></Button>
     </ScrollView>
   );
 }
