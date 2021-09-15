@@ -1,89 +1,62 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  ScrollView,
-  Button,
-} from "react-native";
+import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
-  const [buttonTitle, setButtonTitle] = useState("Press Me");
-
-  const handleButtonClick = () => {
-    if (buttonTitle === "Press Me") {
-      setButtonTitle("Ouch!!");
-    } else if (buttonTitle === "Ouch!!") {
-      setButtonTitle("Press Me");
-    }
-  };
+  const [greet, setGreet] = useState("Hello, ");
+  const [name, setName] = useState("<Name>");
 
   return (
-    <ScrollView contentContainerStyle={styles.container} style={styles.scroll}>
-      <View style={styles.title}>
-        <Text style={styles.mainTitle}>Hello React Native</Text>
-        <Text style={styles.subTitle}>만나서 반갑습니다 :)</Text>
+    <View style={styles.body}>
+      <Text style={styles.text}>
+        {greet}
+        {name}
+      </Text>
+      <TextInput
+        style={styles.textInput}
+        placeholder="이름을 입력하세요"
+        onChangeText={setName}
+      />
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Nice"
+          onPress={() => {
+            setGreet("Nice to meet you, ");
+          }}
+        ></Button>
+        <View style={{ width: 10 }}></View>
+        <Button
+          title="Hello"
+          onPress={() => {
+            setGreet("Hello, ");
+          }}
+        ></Button>
       </View>
-      <View style={styles.sentenceContainer}>
-        <Text style={styles.sentence}>First sentence</Text>
-        <Text style={styles.sentence}>Second sentence</Text>
-      </View>
-      <Image style={styles.image} source={require("./cat-icon.png")} />
-      <Image style={styles.image} source={require("./cat-icon.png")} />
-      <Image style={styles.image} source={require("./cat-icon.png")} />
-      <Button title={buttonTitle} onPress={handleButtonClick}></Button>
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  scroll: {
+  body: {
     padding: 10,
   },
 
-  title: {
-    alignSelf: "stretch",
-    textAlign: "center",
-    backgroundColor: "yellow",
+  text: {
+    backgroundColor: "#b2bec3",
+    height: 50,
+    fontSize: 20,
     padding: 10,
-    borderRadius: 10,
     marginBottom: 10,
   },
 
-  mainTitle: {
-    fontSize: 25,
-    fontWeight: 600,
-  },
-
-  subTitle: {
-    fontSize: 15,
-    color: "blue",
-  },
-
-  image: {
-    width: 200,
-    height: 200,
-    marginBottom: 10,
-  },
-
-  sentenceContainer: {
-    alignSelf: "stretch",
-  },
-
-  sentence: {
-    fontSize: 16,
+  textInput: {
     padding: 10,
-    backgroundColor: "gray",
-    color: "white",
-    borderRadius: 10,
+    height: 50,
     marginBottom: 10,
+    borderWidth: 1,
+    borderColor: "#2d3436",
+  },
+
+  buttonContainer: {
+    flexDirection: "row-reverse",
   },
 });
