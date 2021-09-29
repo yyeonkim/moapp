@@ -2,24 +2,46 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [countA, setCountA] = useState(0);
+  const [countB, setCountB] = useState(0);
 
   return (
     <View style={styles.body}>
-      <Text style={styles.textBox}>{count}</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.textBox}>{countA}</Text>
+        <Text style={styles.textBox}>{countB}</Text>
+      </View>
 
       <View style={styles.buttonContainer}>
         <Button
-          title="Count Up"
+          style={styles.styledButton}
+          title="+"
           onPress={() => {
-            setCount((current) => current + 1);
+            setCountA((current) => current + 1);
           }}
         ></Button>
-        <View style={{ height: 10 }}></View>
+        <View style={{ width: 10 }}></View>
         <Button
-          title="Count Down"
+          style={styles.styledButton}
+          title="+"
           onPress={() => {
-            setCount((current) => current - 1);
+            setCountB((current) => current + 1);
+          }}
+        ></Button>
+        <View style={{ width: 10 }}></View>
+        <Button
+          style={styles.styledButton}
+          title="-"
+          onPress={() => {
+            setCountA((current) => current - 1);
+          }}
+        ></Button>
+        <View style={{ width: 10 }}></View>
+        <Button
+          style={styles.styledButton}
+          title="-"
+          onPress={() => {
+            setCountB((current) => current - 1);
           }}
         ></Button>
       </View>
@@ -33,10 +55,21 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
 
+  textContainer: {
+    flexDirection: "row",
+  },
+
   textBox: {
     backgroundColor: "#b2bec3",
     fontSize: 20,
     padding: 10,
     marginBottom: 10,
+    marginRight: 10,
   },
+
+  buttonContainer: {
+    flexDirection: "row",
+  },
+
+  styledButton: {},
 });
