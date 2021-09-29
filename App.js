@@ -2,32 +2,24 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, TextInput } from "react-native";
 
 export default function App() {
-  const [greet, setGreet] = useState("Hello, ");
-  const [name, setName] = useState("<Name>");
+  const [count, setCount] = useState(0);
 
   return (
     <View style={styles.body}>
-      <Text style={styles.textBox}>
-        {greet}
-        {name}
-      </Text>
-      <TextInput
-        style={styles.textInput}
-        placeholder="이름을 입력하세요"
-        onChangeText={setName}
-      />
+      <Text style={styles.textBox}>{count}</Text>
+
       <View style={styles.buttonContainer}>
         <Button
-          title="Nice"
+          title="Count Up"
           onPress={() => {
-            setGreet("Nice to meet you, ");
+            setCount((current) => current + 1);
           }}
         ></Button>
-        <View style={{ width: 10 }}></View>
+        <View style={{ height: 10 }}></View>
         <Button
-          title="Hello"
+          title="Count Down"
           onPress={() => {
-            setGreet("Hello, ");
+            setCount((current) => current - 1);
           }}
         ></Button>
       </View>
@@ -46,17 +38,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     padding: 10,
     marginBottom: 10,
-  },
-
-  textInput: {
-    padding: 10,
-    height: 50,
-    marginBottom: 10,
-    borderWidth: 1,
-    borderColor: "#2d3436",
-  },
-
-  buttonContainer: {
-    flexDirection: "row-reverse",
   },
 });
