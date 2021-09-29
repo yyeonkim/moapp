@@ -9,7 +9,10 @@ export default function App() {
     <View style={styles.body}>
       <View style={styles.textContainer}>
         <Text style={styles.textBox}>{countA}</Text>
+        <Text style={styles.operation}>X</Text>
         <Text style={styles.textBox}>{countB}</Text>
+        <Text style={styles.operation}>=</Text>
+        <Text style={styles.textBox}>{countA * countB}</Text>
       </View>
 
       <View style={styles.buttonContainer}>
@@ -28,7 +31,9 @@ export default function App() {
             setCountB((current) => current + 1);
           }}
         ></Button>
-        <View style={{ width: 10 }}></View>
+      </View>
+
+      <View style={styles.buttonContainer}>
         <Button
           style={styles.styledButton}
           title="-"
@@ -67,9 +72,19 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 
-  buttonContainer: {
-    flexDirection: "row",
+  operation: {
+    fontSize: 20,
+    padding: 10,
+    marginBottom: 10,
+    marginRight: 10,
   },
 
-  styledButton: {},
+  buttonContainer: {
+    flexDirection: "row",
+    marginBottom: 10,
+  },
+
+  styledButton: {
+    width: 20,
+  },
 });
