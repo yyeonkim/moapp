@@ -17,12 +17,14 @@ export default function Hello() {
         placeholder="Your name"
         onChangeText={setName}
       />
-      <Button title="Hello" onPress={() => setGreet("Hello, ")}></Button>
-      <View style={{ height: 10 }}></View>
-      <Button
-        title="Nice"
-        onPress={() => setGreet("Nice to meet you, ")}
-      ></Button>
+      <View style={styles.buttonContainer}>
+        <Button
+          title="Nice"
+          onPress={() => setGreet("Nice to meet you, ")}
+        ></Button>
+        <View style={{ width: 10 }}></View>
+        <Button title="Hello" onPress={() => setGreet("Hello, ")}></Button>
+      </View>
     </View>
   );
 }
@@ -43,5 +45,9 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     fontSize: 20,
+  },
+
+  buttonContainer: {
+    flexDirection: "row-reverse",
   },
 });
