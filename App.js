@@ -11,20 +11,29 @@ export default function App() {
   const [refresh, setRefresh] = useState(0);
 
   const addItem = () => {
-    names.push(name);
-    phones.push(number);
-    setRefresh((current) => current + 1);
-    setName("");
-    setNumber();
+    if (name && number) {
+      names.push(name);
+      phones.push(number);
+      setRefresh((current) => current + 1);
+      setName();
+      setNumber();
+    }
+  };
+
+  const deleteItem = () => {
+    names.pop();
+    phones.pop();
+    setRefresh((current) => current - 1);
   };
 
   let L = [];
 
   for (let i = 0; i < names.length; i++) {
     const item = (
-      <Text key={i}>
-        {names[i]}: {phones[i]}
-      </Text>
+      <View key={i} style={{ flexDirection: "row" }}>
+        <Text style={styles.textBox}>{names[i]}</Text>
+        <Text style={styles.textBox}>{phones[i]}</Text>
+      </View>
     );
     L.push(item);
   }
@@ -46,6 +55,7 @@ export default function App() {
           onChangeText={setNumber}
         />
         <Button title="Add" onPress={addItem} />
+        <Button title="Del" onPress={deleteItem} />
       </View>
       {L}
     </View>
@@ -73,5 +83,11 @@ const styles = StyleSheet.create({
   formStyle: {
     flexDirection: "row",
     marginBottom: 10,
+  },
+
+  textBox: {
+    borderWidth: 1,
+    flex: 1,
+    padding: 10,
   },
 });
