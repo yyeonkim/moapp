@@ -37,7 +37,7 @@ export default function Dice({ num }) {
         </View>
         <View style={{ flexDirection: "row" }}>
           <Blank />
-          <Circle />
+          <Blank />
           <Blank />
         </View>
         <View style={{ flexDirection: "row" }}>
@@ -120,17 +120,17 @@ export default function Dice({ num }) {
       <View style={styles.dice}>
         <View style={{ flexDirection: "row" }}>
           <Circle />
-          <Circle />
+          <Blank />
           <Circle />
         </View>
         <View style={{ flexDirection: "row" }}>
-          <Blank />
           <Circle />
           <Blank />
+          <Circle />
         </View>
         <View style={{ flexDirection: "row" }}>
           <Circle />
-          <Circle />
+          <Blank />
           <Circle />
         </View>
       </View>
