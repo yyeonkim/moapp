@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
-import Dice from "./components/Dice";
+import Dice from "../components/Dice";
 
 export default function App() {
   const [num1, setNum1] = useState(1);
