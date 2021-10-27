@@ -14,7 +14,7 @@ export default function App() {
   return (
     <View style={styles.body}>
       <Text style={styles.text}>Double Dice</Text>
-      <Text style={styles.text}>{num1 + num2}</Text>
+      <Text style={styles.sum}>{num1 + num2}</Text>
       <View style={styles.dices}>
         <Dice num={num1} />
         <Dice num={num2} />
@@ -35,13 +35,20 @@ export default function App() {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    marginTop: 100,
+    marginTop: 200,
   },
 
   text: {
     textAlign: "center",
     fontSize: 20,
-    margin: 5,
+    marginBottom: 10,
+  },
+
+  sum: {
+    textAlign: "center",
+    fontSize: 50,
+    fontWeight: "bold",
+    marginBottom: 10,
   },
 
   dices: {
