@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-import { Blank } from "./Blank";
+import Blank from "./Blank";
 import Circle from "./Circle";
 
 export default function Dice({ num }) {

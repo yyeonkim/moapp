@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-const Circle = () => {
+export default function Circle() {
   return <View style={styles.circle} />;
-};
+}
 
 const styles = StyleSheet.create({
   circle: {
@@ -14,5 +14,3 @@ const styles = StyleSheet.create({
     margin: 2,
   },
 });
-
-export default Circle;

@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-const Blank = () => {
-  return <View style={(styles.circle, styles.blank)} />;
-};
+export default function Blank() {
+  return <View style={[styles.circle, styles.blank]} />;
+}
 
 const styles = StyleSheet.create({
   circle: {
