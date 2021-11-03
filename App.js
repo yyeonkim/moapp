@@ -1,33 +1,33 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
-
-import Dice from "./components/Dice";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableNativeFeedback,
+  TouchableHightlight,
+} from "react-native";
 
 export default function App() {
-  const [num1, setNum1] = useState(1);
-  const [num2, setNum2] = useState(1);
-
-  const getRandom = () => {
-    return Math.floor(Math.random() * 6 + 1);
-  };
+  const [N, setN] = useState(0);
 
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Double Dice</Text>
-      <Text style={styles.sum}>{num1 + num2}</Text>
-      <View style={styles.dices}>
-        <Dice num={num1} />
-        <Dice num={num2} />
-      </View>
-      <View style={styles.button}>
-        <Button
-          title="Roll the dice"
-          onPress={() => {
-            setNum1(getRandom());
-            setNum2(getRandom());
-          }}
-        />
-      </View>
+      <Text style={styles.text}>Touched {N} times</Text>
+
+      <TouchableHightlight
+        underlayColor="orange"
+        onPress={() => setN((current) => current + 1)}
+      >
+        <View style={[styles.text, styles.button]}>
+          <Text>High, Touch Me</Text>
+        </View>
+      </TouchableHightlight>
+
+      <TouchableNativeFeedback onPress={() => setN((current) => current - 1)}>
+        <View>
+          <Text style={[styles.button, styles.text]}>High, Touch Me</Text>
+        </View>
+      </TouchableNativeFeedback>
     </View>
   );
 }
@@ -35,29 +35,17 @@ export default function App() {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    marginTop: 200,
+    marginTop: 40,
+    alignItems: "center",
   },
 
   text: {
-    textAlign: "center",
-    fontSize: 20,
-    marginBottom: 10,
-  },
-
-  sum: {
-    textAlign: "center",
-    fontSize: 50,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-
-  dices: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
+    fontSize: 30,
+    padding: 10,
+    margin: 10,
   },
 
   button: {
-    marginHorizontal: 100,
-    marginVertical: 30,
+    color: "dodgerblue",
   },
 });
