@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
+import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
 
 import Dice from "./components/Dice";
 
 export default function App() {
-  const [num1, setNum1] = useState(1);
-  const [num2, setNum2] = useState(1);
+  const [num, setNum] = useState(1);
 
   const getRandom = () => {
     return Math.floor(Math.random() * 6 + 1);
@@ -13,21 +12,16 @@ export default function App() {
 
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Double Dice</Text>
-      <Text style={styles.sum}>{num1 + num2}</Text>
-      <View style={styles.dices}>
-        <Dice num={num1} />
-        <Dice num={num2} />
-      </View>
-      <View style={styles.button}>
-        <Button
-          title="Roll the dice"
-          onPress={() => {
-            setNum1(getRandom());
-            setNum2(getRandom());
-          }}
-        />
-      </View>
+      <Text style={styles.text}>Dice</Text>
+      <Text style={styles.sum}>{num}</Text>
+      <TouchableOpacity
+        style={styles.dices}
+        onPress={() => {
+          setNum(getRandom());
+        }}
+      >
+        <Dice num={num} />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -35,7 +29,7 @@ export default function App() {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    marginTop: 200,
+    justifyContent: "center",
   },
 
   text: {
@@ -53,7 +47,7 @@ const styles = StyleSheet.create({
 
   dices: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
 
   button: {
