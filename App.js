@@ -1,33 +1,15 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Button } from "react-native";
-
-import Dice from "./components/Dice";
+import React from "react";
+import { StyleSheet, Text, Button, View } from "react-native";
+import BoxGroup from "./components/BoxGroup";
 
 export default function App() {
-  const [num1, setNum1] = useState(1);
-  const [num2, setNum2] = useState(1);
-
-  const getRandom = () => {
-    return Math.floor(Math.random() * 6 + 1);
-  };
-
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>Double Dice</Text>
-      <Text style={styles.sum}>{num1 + num2}</Text>
-      <View style={styles.dices}>
-        <Dice num={num1} />
-        <Dice num={num2} />
-      </View>
-      <View style={styles.button}>
-        <Button
-          title="Roll the dice"
-          onPress={() => {
-            setNum1(getRandom());
-            setNum2(getRandom());
-          }}
-        />
-      </View>
+      <BoxGroup>
+        <Text style={styles.text}>ABCD</Text>
+        <Text style={styles.text}>123</Text>
+        <Button title="OK" />
+      </BoxGroup>
     </View>
   );
 }
@@ -35,29 +17,14 @@ export default function App() {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    marginTop: 200,
+    marginTop: 40,
+    alignItems: "center",
   },
 
   text: {
-    textAlign: "center",
-    fontSize: 20,
-    marginBottom: 10,
-  },
-
-  sum: {
-    textAlign: "center",
-    fontSize: 50,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-
-  dices: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-
-  button: {
-    marginHorizontal: 100,
-    marginVertical: 30,
+    backgroundColor: "wheat",
+    fontSize: 30,
+    margin: 2,
+    padding: 2,
   },
 });
