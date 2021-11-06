@@ -1,14 +1,17 @@
 import React from "react";
 import { StyleSheet, Text, Button, View } from "react-native";
 import BoxGroup from "./components/BoxGroup";
+import Mult from "./components/Mult";
 
 export default function App() {
   return (
-    <View style={styles.body}>
+    <View style={{ paddingTop: 30 }}>
       <BoxGroup>
-        <Text style={styles.text}>ABCD</Text>
-        <Text style={styles.text}>123</Text>
-        <Button title="OK" />
+        <Mult />
+      </BoxGroup>
+      <BoxGroup>
+        <Mult />
+        <Mult />
       </BoxGroup>
     </View>
   );
