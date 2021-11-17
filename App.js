@@ -27,7 +27,7 @@ export default function App() {
 
   useEffect(() => {
     setInterval(updateTime, 1000);
-  }, []);
+  });
 
   return (
     <View style={styles.body}>
