@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, StyleSheet, Text, View, TextInput } from "react-native";
 import CalendarPicker from "react-native-calendar-picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
   const [date, setDate] = useState("");
@@ -8,9 +9,26 @@ export default function App() {
   const [expense, setExpense] = useState("");
   const [memo, setMemo] = useState("");
 
-  const onDateChange = (date) => {
+  const onDateChange = async (date) => {
     setDate(date.format("YYYYMMDD"));
     setDate1(date.format("MMMM DD, YYYY"));
+
+    const key = date.format("YYYYMMDD");
+    const value = await AsyncStorage.getItem(key);
+    const valueM = await AsyncStorage.getItem(key + "m");
+
+    if (value !== null) {
+      setExpense(value);
+      setMemo(valueM);
+    } else {
+      setExpense("");
+      setMemo("");
+    }
+  };
+
+  const saveMemo = async () => {
+    await AsyncStorage.setItem(date, expense);
+    await AsyncStorage.setItem(date + "m", memo);
   };
 
   return (
@@ -25,7 +43,7 @@ export default function App() {
             keyboardType="numeric"
             onChangeText={setExpense}
           />
-          <Button title="SAVE" />
+          <Button title="SAVE" onPress={saveMemo} />
         </Text>
         <TextInput
           style={styles.memo}
