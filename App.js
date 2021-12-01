@@ -1,41 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
+import CalendarPicker from "react-native-calendar-picker";
 
 export default function App() {
-  const API_KEY = "4009dd27be67a419448e41926efeeeb5";
-  const [weatherList, setWeatherList] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=Seoul&appid=${API_KEY}&units=metric`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setWeatherList(data.list);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
-
-  return (
-    <View style={styles.body}>
-      {weatherList.map((item) => (
-        <View style={styles.weather}>
-          <Image
-            style={styles.icon}
-            source={{
-              uri: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,
-            }}
-          />
-          <Text>{item.main.temp}</Text>
-          <Text>{item.weather[0].description}</Text>
-        </View>
-      ))}
-    </View>
-  );
+  return <View style={styles.body}></View>;
 }
 
 const styles = StyleSheet.create({
